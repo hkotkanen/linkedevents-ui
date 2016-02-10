@@ -199,7 +199,7 @@ var EditorPage = React.createClass({
                 </div>
 
                 <div className="container">
-                    <FormFields ref="form" action={this.props.params.action} editor={this.props.editor} values={this.props.values} />
+                    <FormFields ref="form" user={this.props.user} action={this.props.params.action} editor={this.props.editor} values={this.props.values}/>
                 </div>
 
                 <div className="editor-action-buttons">

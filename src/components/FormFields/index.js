@@ -119,9 +119,7 @@ class FormFields extends React.Component {
                     </div>
                     <SideField>
                         <label><FormattedMessage id="event-picture"/></label>
-                        <ImageUpload name="image" />
-                        <FormattedMessage id="or"/>
-                        <ImageGallery />
+                        <ImageGallery {...this.props} label="image-preview" name="image" />
                     </SideField>
                 </div>
 
