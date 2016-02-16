@@ -14,7 +14,9 @@
     "confirm-delete": "Varmista tapahtuman poistaminen",
     "delete": "Poista",
     "confirm": "Suorita",
+    "save": "Tallenna",
 
+    "ready": "Valmis",
     "clear-form": "Tyhjennä kentät",
 
     "event-presented-in-languages": "Tämä tapahtuma esitetään seuraavilla kielillä.",
