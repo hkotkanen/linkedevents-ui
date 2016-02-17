@@ -15,6 +15,11 @@ class ImagePicker extends React.Component {
     constructor(props) {
         super(props)
 
+        // NB! WIP. "selected"-class of image thumbnails depends on these props
+        // if(this.props.editor.values.image) {
+        //     this.props.images.selected = this.props.editor.values.image
+        // }
+
         this.state = {
             open: false
         }
@@ -44,12 +49,6 @@ class ImagePicker extends React.Component {
         this.setState({ open: true })
     }
 
-    saveAndClose() {
-        // api.saveData()
-        //     .then(() => this.setState({ open: false }))
-        this.setState({ open: false })
-    }
-
     render() {
         let selectedImage = ''
         if(("image" in this.props.editor.values)
@@ -65,7 +64,7 @@ class ImagePicker extends React.Component {
                         <i className="material-icons">&#xE2C6;</i>
                     </div>
                     <label>
-                        <FormattedMessage id="choose-picture"/>
+                        <FormattedMessage id="choose-image"/>
                     </label>
                 </div>
 
@@ -73,21 +72,22 @@ class ImagePicker extends React.Component {
                     show={this.state.open}
                     onHide={() => this.closeGalleryModal()}
                     aria-labelledby="ModalHeader"
+                    width="600px"
                  >
                     <Modal.Header closeButton>
-                        <Modal.Title id='ModalHeader'>Uusi kuva</Modal.Title>
+                        <Modal.Title id='ModalHeader'><FormattedMessage id="new-image" /></Modal.Title>
                         <br />
                         <input onChange={(e) => this.handleUpload(e)} style={{ display: 'none' }} type="file" ref={(ref) => this.hiddenFileInput = ref} />
                         <RaisedButton
-                            label= "Lataa kuva kovalevyltäsi"
+                            label= {<FormattedMessage id="upload-image" />}
                             primary= {true}
                             onClick={() => this.clickHiddenUploadInput()}
                             style={{margin:"0 0 15px 0"}}
                         />
                         <br />
-                        tai käytä kuvaa ulkoisessa osoitteessa:
+                        <FormattedMessage id="use-external-image-url" />
                         <br />
-                        <input id="externalImageURL" onSubmit={this.handleExternalImageSave} placeholder={"ulkoinen URL"} ref={(ref) => this.externalImageURL = ref} />
+                        <input id="externalImageURL" onSubmit={this.handleExternalImageSave} placeholder={"URL"} ref={(ref) => this.externalImageURL = ref} />
                         <RaisedButton
                             label="OK"
                             onClick={() => this.handleExternalImageSave()}
@@ -96,7 +96,7 @@ class ImagePicker extends React.Component {
                     </Modal.Header>
 
                     <Modal.Body>
-                        <Modal.Title id='ModalBodyTitle'>Käytä järjestelmässä olemassaolevaa kuvaa</Modal.Title>
+                        <Modal.Title id='ModalBodyTitle'><FormattedMessage id="use-existing-image"/></Modal.Title>
                         <ImageGalleryGrid user={this.props.user} images={this.props.images} />
                         <div style={{clear:'both'}} />
                     </Modal.Body>
@@ -104,7 +104,7 @@ class ImagePicker extends React.Component {
                     <Modal.Footer>
                         <RaisedButton
                             label={<FormattedMessage id="ready"/>}
-                            onClick={() => this.saveAndClose()}
+                            onClick={() => this.closeGalleryModal()}
                         />
                     </Modal.Footer>
 
