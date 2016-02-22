@@ -8,6 +8,6 @@ export default {
     events: events,
     user: user,
     editor: editor,
-    app: app
+    app: app,
     images: images
 }
